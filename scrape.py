@@ -8,9 +8,16 @@ import time
 import uuid
 from datetime import datetime
 
-from app import db
+from db import client
+
+
+db = client.flask_database
+collection = db.collection
+
 
 MONGODB_URI = 'mongodb+srv://nayaa3231:<bWmgxZgpyEHaxFYA>@internproject.flgvh.mongodb.net/?retryWrites=true&w=majority&appName=internproject'
+
+
 
 def scrape_twitter():
     options = Options()
