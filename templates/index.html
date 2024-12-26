@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Trends</title>
+    <script>
+        function runScript() {
+            fetch('/run-script')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('result').innerText = JSON.stringify(data, null, 2);
+                });
+        }
+    </script>
+</head>
+<body>
+    <h1>Twitter Trends Scraper</h1>
+    <h1>Twitter Trends Scraper</h1>
+    <h1>Twitter Trends Scraper</h1>
+    <h1>Twitter Trends Scraper</h1>
+    <h1>Twitter Trends Scraper</h1>
+    <h1>Twitter Trends Scraper</h1>
+    <button onclick="runScript()">Click Here to Run the Script</button>
+    <pre id="result"></pre>
+</body>
+</html>
+
+def scrape_twitter():
+    try:
+        # Your existing login code...
+        
+        # Return some actual data instead of just True
+       5
+    except Exception as e:
+        return {
+            "status": "error",
+            "message": str(e)
+        }
+    finally:
+        driver.quit()  # Remove the long sleep
