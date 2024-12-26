@@ -1,4 +1,5 @@
 selenium
 flask
-pymongo
+Pymongo
 requests
+flask_Pymongo
