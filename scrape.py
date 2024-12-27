@@ -57,6 +57,7 @@ def scrape_twitter():
             EC.presence_of_element_located((By.NAME, "password"))
         )
 
+        #dont tweet anything weird pls
         password_input.send_keys("Abhinav@2004")
         password_input.send_keys(Keys.RETURN)
         print("Password entered")
