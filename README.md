@@ -2,8 +2,7 @@ Task for STIR Internship
 
 
 MongoDB Notes:
-You may need to generate and use your own connection string or alternatively, here is my username and password lol: 
-nayaa3231@gmail.com
+You may need to generate and use your own connection string.
 
 ![Screenshot 2024-12-27 131727](https://github.com/user-attachments/assets/d9c48242-2fa3-4bee-81b7-5f239ebeff2b)
 
