@@ -4,6 +4,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.firefox.options import Options
+#from selenium.webdriver.chrome.options import Options
+
 import time
 import uuid
 from datetime import datetime
@@ -20,9 +22,11 @@ MONGODB_URI = 'mongodb+srv://nayaa3231:<bWmgxZgpyEHaxFYA>@internproject.flgvh.mo
 
 
 def scrape_twitter():
-    options = Options()
-    options.headless = False  # Disable headless for debugging
-    options.set_preference("dom.webdriver.enabled", False)  # Attempt to bypass bot detection
+    options = webdriver.FirefoxOptions()
+    #options.headless = True  # Disable headless for debugging
+    options.add_argument("-headless")  # Attempt to bypass bot detection
+    #options.add_argument("--disable-blink-features")
+    #options.add_argument("--disable-blink-features=AutomationControlled")  # Attempt to bypass bot detection
 
     driver = webdriver.Firefox(options=options)
 
@@ -36,6 +40,7 @@ def scrape_twitter():
         username_input.click()
         username_input.send_keys("KishoriCharles")
         username_input.send_keys(Keys.RETURN)
+        print("Username entered")
 
         # Wait for either email or password input field
         try:
@@ -45,6 +50,7 @@ def scrape_twitter():
             )
             email_input.send_keys("abhinavprajapati589@gmail.com")
             email_input.send_keys(Keys.RETURN)
+            print("Email entered")
         except:
             # If no email field, proceed to check for the password field
             pass
@@ -57,6 +63,7 @@ def scrape_twitter():
         # Enter password
         password_input.send_keys("Abhinav@2004")
         password_input.send_keys(Keys.RETURN)
+        print("Password entered")
 
         # Wait for the home page to load
         WebDriverWait(driver, 10).until(
@@ -87,7 +94,6 @@ def scrape_twitter():
                         if "Trending" not in topic_name and "·" not in topic_name:
                             if topic_name not in trending_topics:  # Avoid duplicates
                                 trending_topics.append(topic_name)
-                                print(trending_topics)
                 except Exception as e:
                     print(f"Error extracting topic: {e}")
                     continue
@@ -99,6 +105,7 @@ def scrape_twitter():
                 "timestamp": datetime.utcnow(),  # Store timestamp in UTC
                 "unique_id": str(uuid.uuid4())  # Generate a unique ID for each entry
             }
+            print(data)
             db.collections.insert_one(data)
 
 
